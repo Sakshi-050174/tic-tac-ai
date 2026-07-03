@@ -1,0 +1,53 @@
+.game {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  .header {
+  text-align: center;
+
+  h1 {
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+  }
+
+  p {
+    margin-top: .5rem;
+    opacity: .7;
+    font-size: 1rem;
+  }
+}
+}
+
+
+
+.top {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  align-items: start;
+}
+
+.boardSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 640px) {
+  .game {
+    padding: 2rem 1rem;
+    .content {
+      grid-template-columns: 1fr;
+    }
+  }
+}

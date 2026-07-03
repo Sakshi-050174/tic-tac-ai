@@ -1,0 +1,27 @@
+.label {
+  color: var(--color-text-secondary);
+  font-size: .875rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.value {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+}
+
+.turnX {
+  color: #818cf8;
+}
+
+.turnO {
+  color: #22c55e;
+}
+
+.winner{
+  color: #22c55e;
+}
+
+.draw {
+  color: #f59e0b;
+}

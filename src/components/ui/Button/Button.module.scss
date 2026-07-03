@@ -1,0 +1,33 @@
+.button {
+  padding: 0.75rem 1rem;
+
+  border-radius: 12px;
+
+  border: none;
+
+  cursor: pointer;
+
+  font-weight: 600;
+
+  transition: 0.2s ease;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  color: white;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.primary {
+  background: #4f46e5;
+}
+
+.secondary {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.danger {
+  background: #ef4444;
+}

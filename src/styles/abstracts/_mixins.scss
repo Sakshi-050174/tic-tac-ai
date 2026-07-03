@@ -1,0 +1,31 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin glass {
+  background: rgba(24,24,27,.75);
+
+  backdrop-filter: blur(20px);
+
+  border: 1px solid rgba(255,255,255,.08);
+
+  box-shadow: var(--shadow-lg);
+}
+
+@mixin card {
+  @include glass;
+
+  border-radius: var(--radius-lg);
+}
+
+@mixin transition {
+  transition: all var(--transition-normal);
+}

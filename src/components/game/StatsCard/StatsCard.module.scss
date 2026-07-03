@@ -1,0 +1,41 @@
+@use "../../../styles/abstracts/mixins" as *;
+
+.card {
+  @include card;
+  padding: 1.5rem;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  .symbol{
+    font-size: 1rem;
+    font-weight: 600;
+    margin-right: .25rem;
+    color:#818cf8;
+    &.OSymbol {
+      color: #22c55e;
+    } 
+  }
+
+  .draw {
+    color: #f59e0b;
+    margin-right: .25rem;
+  }
+}
+
+.item {
+  text-align: center;
+}
+
+.label {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+.value {
+  margin-top: 0.5rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+}

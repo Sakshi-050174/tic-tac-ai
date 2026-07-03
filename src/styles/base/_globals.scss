@@ -1,0 +1,39 @@
+*,
+*::before,
+*::after{
+  box-sizing:border-box;
+}
+body{
+  margin:0;
+  font-family:
+    Inter,
+    system-ui,
+    sans-serif;
+  background:
+    radial-gradient(
+      circle at top,
+      #1e293b,
+      #0f172a 60%,
+      #020617
+    );
+  color:var(--color-text-primary);
+  height: 98vh;
+  overflow-x:hidden;
+  #root{
+    height: 100%;
+  }
+  button{
+    font:inherit;
+  }
+  img,svg{
+    display:block;
+    max-width:100%;
+  }
+  .OSymbol {
+    color: #22c55e;
+  }
+  .XSymbol {
+    color: #818cf8;
+  }
+}
+
