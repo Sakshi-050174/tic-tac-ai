@@ -1,6 +1,6 @@
 import { useGameStore } from "../../../../features/game/store";
 
-import styles from "./Timeline.module.scss";
+import styles  from './TImeline.module.scss';
 
 export default function Timeline() {
   const moves = useGameStore(
