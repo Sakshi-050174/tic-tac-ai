@@ -1,34 +1,33 @@
-import { INITIAL_BOARD } from "../utils/constants";
+import {
+  rebuildBoard,
+} from "./rebuildBoard";
+import type { UndoMoveOptions } from "./types";
 
-import type {
-  BoardState,
-  Move,
-} from "../types";
+export function undoMove({
+  moves,
+  mode,
+}: UndoMoveOptions) {
+  const removeCount =
+    mode === "human-vs-ai"
+      ? 2
+      : 1;
 
-export interface UndoResult {
-  board: BoardState;
-
-  moves: Move[];
-}
-
-export function undoMove(
-  moves: Move[]
-): UndoResult {
-  const updatedMoves = moves.slice(0, -1);
-
-  if (updatedMoves.length === 0) {
-    return {
-      board: [...INITIAL_BOARD],
-      moves: [],
-    };
-  }
+  const updatedMoves =
+    moves.slice(
+      0,
+      Math.max(
+        0,
+        moves.length -
+          removeCount
+      )
+    );
 
   return {
-    board: [
-      ...updatedMoves[
-        updatedMoves.length - 1
-      ].board,
-    ],
     moves: updatedMoves,
+
+    board:
+      rebuildBoard(
+        updatedMoves
+      ),
   };
 }

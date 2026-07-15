@@ -1,7 +1,7 @@
 import type {
   BoardState,
   Player,
-} from "../types";
+} from "../types/types";
 
 export function makeMove(
   board: BoardState,

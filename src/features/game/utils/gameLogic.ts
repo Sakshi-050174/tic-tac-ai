@@ -1,4 +1,4 @@
-import { type BoardState, type Player } from "../types";
+import { type BoardState, type Player } from "../types/types";
 import { WINNING_COMBINATIONS } from "./constants";
 
 export function calculateWinner(

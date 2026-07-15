@@ -3,7 +3,7 @@ import { WINNING_COMBINATIONS } from "../utils/constants";
 import type {
   BoardState,
   GameResult,
-} from "../types";
+} from "../types/types";
 
 export function evaluateBoard(
   board: BoardState
