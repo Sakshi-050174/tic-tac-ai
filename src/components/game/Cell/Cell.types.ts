@@ -1,11 +1,22 @@
-import type { CellValue } from "../../../features/game/types";
+import type { KeyboardEvent } from "react";
+
+import type { CellValue } from "@/features/game/types";
 
 export interface CellProps {
+  index: number;
+
   value: CellValue;
 
   isWinning?: boolean;
 
   disabled?: boolean;
 
-  onClick: () => void;
+  tabIndex?: number;
+
+  onClick: (index: number) => void;
+
+  onKeyDown?: (
+    event: KeyboardEvent<HTMLButtonElement>,
+    index: number
+  ) => void;
 }

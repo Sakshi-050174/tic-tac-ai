@@ -1,4 +1,4 @@
-import type { GameStore } from "../store/gameStore";
+import type { GameStore } from "../store";
 
 export const canPlayMove = (
   state: GameStore,
@@ -11,8 +11,6 @@ export const canPlayMove = (
     !state.isThinking
   );
 };
-
-
 
 export const isAITurn = (
   state: GameStore

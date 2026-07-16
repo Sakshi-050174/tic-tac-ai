@@ -1,20 +1,37 @@
-import { useGameStore } from "../../../../features/game/store";
+import { motion } from "framer-motion";
 
-import styles  from './TImeline.module.scss';
+import { useGameStore } from "../../../../features/game/store";
+import { gameSelectors } from "../../../../features/game/store/selectors";
+
+import styles from "./Timeline.module.scss";
+
+const CELL_NAMES = [
+  "A1",
+  "A2",
+  "A3",
+  "B1",
+  "B2",
+  "B3",
+  "C1",
+  "C2",
+  "C3",
+];
 
 export default function Timeline() {
-  const moves = useGameStore(
-    (state) => state.moves
-  );
+  const moves = useGameStore(gameSelectors.moves);
 
   if (moves.length === 0) {
     return (
       <aside className={styles.timeline}>
         <h3>Move History</h3>
 
-        <p className={styles.empty}>
-          No moves yet.
-        </p>
+        <div className={styles.empty}>
+          <span className={styles.emptyIcon}>🎮</span>
+
+          <p>Game hasn't started yet.</p>
+
+          <small>Make the first move.</small>
+        </div>
       </aside>
     );
   }
@@ -24,24 +41,47 @@ export default function Timeline() {
       <h3>Move History</h3>
 
       <ul className={styles.list}>
-        {moves.map((move) => (
-          <li
-            key={move.id}
-            className={styles.item}
-          >
-            <span>
-              #{move.id}
-            </span>
+        {moves.map((move, index) => {
+          const isLatest =
+            index === moves.length - 1;
 
-            <span>
-              {move.player}
-            </span>
+          return (
+            <motion.li
+              key={move.id}
+              layout
+              initial={{
+                opacity: 0,
+                x: -12,
+              }}
+              animate={{
+                opacity: 1,
+                x: 0,
+              }}
+              transition={{
+                duration: 0.2,
+              }}
+              className={`${styles.item} ${
+                isLatest
+                  ? styles.latest
+                  : ""
+              }`}
+            >
+              <span className={styles.player}>
+                {move.player === "X"
+                  ? "❌"
+                  : "⭕"}
+              </span>
 
-            <span>
-              Cell {move.index + 1}
-            </span>
-          </li>
-        ))}
+              <span className={styles.cell}>
+                {CELL_NAMES[move.index]}
+              </span>
+
+              <span className={styles.move}>
+                #{move.id}
+              </span>
+            </motion.li>
+          );
+        })}
       </ul>
     </aside>
   );

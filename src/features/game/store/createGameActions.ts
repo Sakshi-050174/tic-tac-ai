@@ -21,6 +21,7 @@ import {
 import type {
   GameStore,
 } from "./types";
+import { soundManager } from "../services/audio";
 
 type SetState =
   UseBoundStore<
@@ -52,7 +53,7 @@ function applyTurn(
 
     isDraw: turn.result.isDraw,
 
-    moves: [ ...moves, turn.move],
+    moves: [...moves, turn.move],
 
     xScore: turn.scores.xScore,
 
@@ -115,13 +116,15 @@ export function createGameActions(
 
       if (
         state.board[index] !==
-          null ||
+        null ||
         state.winner ||
         state.isDraw ||
         state.isThinking
       ) {
         return;
       }
+
+      soundManager.play("click");
 
       //--------------------------------
       // Human Turn
@@ -167,7 +170,7 @@ export function createGameActions(
         !latest.winner &&
         !latest.isDraw &&
         latest.currentPlayer ===
-          latest.ai.player;
+        latest.ai.player;
 
       if (!shouldPlayAI) {
         return;
@@ -274,6 +277,8 @@ export function createGameActions(
           undoState.board
         );
 
+      soundManager.play('undo');
+
       set({
         board:
           undoState.board,
@@ -284,7 +289,7 @@ export function createGameActions(
         currentPlayer:
           undoState.moves
             .length % 2 ===
-          0
+            0
             ? "X"
             : "O",
 
@@ -303,6 +308,9 @@ export function createGameActions(
     },
 
     restart() {
+
+      soundManager.play("restart");
+
       set((state) => ({
         ...createInitialState(),
 
@@ -327,6 +335,7 @@ export function createGameActions(
     },
 
     resetScores() {
+      soundManager.play('restart');
       set((state) => ({
         ...createInitialState(),
 
