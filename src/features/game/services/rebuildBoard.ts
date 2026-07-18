@@ -5,7 +5,7 @@ export function rebuildBoard(
     moves: Move[]
 ): BoardState {
 
-    const board = [...INITIAL_BOARD];
+    const board:BoardState = [...INITIAL_BOARD];
 
     for (const move of moves) {
         board[move.index] = move.player;

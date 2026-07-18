@@ -61,6 +61,8 @@ export interface GameActions {
   restart: () => void;
 
   resetScores: () => void;
+
+  updateAI(config: Partial<AIConfig>): void;
 }
 
 export type GameStore =

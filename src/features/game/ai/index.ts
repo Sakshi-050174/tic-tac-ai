@@ -5,3 +5,4 @@ export * from "./minimax";
 export * from "./alphaBeta";
 export * from "./strategies";
 export * from "./aiService";
+export * from "./AIEngine";

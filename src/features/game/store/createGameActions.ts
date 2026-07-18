@@ -11,7 +11,10 @@ import {
 } from "../services";
 
 import type {
+  Difficulty,
+  GameMode,
   Move,
+  Player,
 } from "../types";
 
 import {
@@ -68,7 +71,7 @@ export function createGameActions(
   get: GetState
 ) {
   return {
-    setMode(mode) {
+    setMode(mode:GameMode) {
       set((state) => ({
         mode,
         ai: {
@@ -79,7 +82,7 @@ export function createGameActions(
     },
 
     setDifficulty(
-      difficulty
+      difficulty:Difficulty
     ) {
       set((state) => ({
         difficulty,
@@ -92,7 +95,7 @@ export function createGameActions(
       }));
     },
 
-    setAIPlayer(player) {
+    setAIPlayer(player:Player) {
       set((state) => ({
         ai: {
           ...state.ai,
@@ -103,14 +106,14 @@ export function createGameActions(
     },
 
     setThinking(
-      isThinking
+      isThinking:boolean
     ) {
       set({
         isThinking,
       });
     },
 
-    async playMove(index) {
+    async playMove(index:number) {
       const state =
         get();
 
