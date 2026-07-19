@@ -10,10 +10,7 @@ import { minimax } from "../helpers";
  * This strategy always chooses the optimal move.
  */
 export const ImpossibleStrategy: AIStrategy = {
-  getMove({
-    board,
-    aiPlayer,
-  }) {
+  getMove({ board, aiPlayer }) {
     return minimax({
       board,
       aiPlayer,

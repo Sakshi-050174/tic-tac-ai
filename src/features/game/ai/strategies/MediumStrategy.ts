@@ -1,9 +1,6 @@
 import type { AIStrategy } from "../types";
 
-import {
-  availableMoves,
-  findImmediateMove,
-} from "../helpers";
+import { availableMoves, findImmediateMove } from "../helpers";
 
 /**
  * Medium AI
@@ -14,32 +11,20 @@ import {
  * 3. Otherwise play a random legal move.
  */
 export const MediumStrategy: AIStrategy = {
-  getMove({
-    board,
-    aiPlayer,
-  }) {
-    const immediateMove =
-      findImmediateMove(
-        board,
-        aiPlayer
-      );
+  getMove({ board, aiPlayer }) {
+
+    const immediateMove = findImmediateMove(board, aiPlayer);
 
     if (immediateMove !== null) {
       return immediateMove;
     }
 
-    const moves =
-      availableMoves(board);
+    const moves = availableMoves(board);
 
     if (moves.length === 0) {
       return -1;
     }
 
-    return moves[
-      Math.floor(
-        Math.random() *
-          moves.length
-      )
-    ];
+    return moves[Math.floor(Math.random() * moves.length)];
   },
 };

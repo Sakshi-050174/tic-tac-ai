@@ -4,8 +4,6 @@ import { MediumStrategy } from "./strategies/MediumStrategy";
 import { HardStrategy } from "./strategies/HardStrategy";
 import { ImpossibleStrategy } from "./strategies/ImpossibleStrategy";
 
-// import { EasyStrategy, MediumStrategy, HardStrategy, ImpossibleStrategy } from "./strategies";
-
 /**
  * Maps each difficulty level to its strategy.
  */

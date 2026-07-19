@@ -1,8 +1,4 @@
-import type {
-  BoardState,
-  Player,
-} from "../../types";
-
+import type { BoardState, Player } from "../../types";
 import { evaluateBoard } from "../../services";
 import { availableMoves } from "./availableMoves";
 
@@ -28,6 +24,7 @@ function evaluateTerminalState(
   aiPlayer: Player,
   depth: number
 ): number | null {
+
   const result = evaluateBoard(board);
 
   if (result.winner) {
@@ -55,18 +52,11 @@ export function minimax({
   alpha,
   beta,
 }: MinimaxOptions): MinimaxResult {
-  const terminalScore =
-    evaluateTerminalState(
-      board,
-      aiPlayer,
-      depth
-    );
+
+  const terminalScore = evaluateTerminalState(board, aiPlayer, depth);
 
   if (terminalScore !== null) {
-    return {
-      move: -1,
-      score: terminalScore,
-    };
+    return { move: -1, score: terminalScore };
   }
 
   const maximizing = currentPlayer === aiPlayer;
@@ -76,6 +66,7 @@ export function minimax({
   let bestScore = maximizing ? Number.NEGATIVE_INFINITY : Number.POSITIVE_INFINITY;
 
   for (const move of availableMoves(board)) {
+
     const nextBoard = [...board];
 
     nextBoard[move] = currentPlayer;
@@ -94,25 +85,22 @@ export function minimax({
       });
 
     if (maximizing) {
+
       if (score > bestScore) {
         bestScore = score;
         bestMove = move;
       }
 
-      alpha = Math.max(
-        alpha,
-        bestScore
-      );
+      alpha = Math.max(alpha, bestScore);
+
     } else {
+
       if (score < bestScore) {
         bestScore = score;
         bestMove = move;
       }
 
-      beta = Math.min(
-        beta,
-        bestScore
-      );
+      beta = Math.min(beta, bestScore);
     }
 
     if (beta <= alpha) {
@@ -120,8 +108,5 @@ export function minimax({
     }
   }
 
-  return {
-    move: bestMove,
-    score: bestScore,
-  };
+  return { move: bestMove, score: bestScore };
 }

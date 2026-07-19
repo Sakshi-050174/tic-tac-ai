@@ -1,10 +1,6 @@
 import type { AIStrategy } from "../types";
 
-import {
-  findForkMove,
-  findImmediateMove,
-  findPreferredMove,
-} from "../helpers";
+import { findForkMove, findImmediateMove, findPreferredMove } from "../helpers";
 
 import type { Player } from "../../types";
 
@@ -19,48 +15,28 @@ import type { Player } from "../../types";
  * 5. Prefer center → corners → edges.
  */
 export const HardStrategy: AIStrategy = {
-  getMove({
-    board,
-    aiPlayer,
-  }) {
+  getMove({ board, aiPlayer }) {
     const immediateMove =
-      findImmediateMove(
-        board,
-        aiPlayer
-      );
+      findImmediateMove(board, aiPlayer);
 
     if (immediateMove !== null) {
       return immediateMove;
     }
 
-    const forkMove =
-      findForkMove(
-        board,
-        aiPlayer
-      );
+    const forkMove = findForkMove(board, aiPlayer);
 
     if (forkMove !== null) {
       return forkMove;
     }
 
-    const opponent: Player =
-      aiPlayer === "X"
-        ? "O"
-        : "X";
+    const opponent: Player = aiPlayer === "X" ? "O" : "X";
 
-    const blockFork =
-      findForkMove(
-        board,
-        opponent
-      );
+    const blockFork = findForkMove(board, opponent);
 
     if (blockFork !== null) {
       return blockFork;
     }
 
-    return (
-      findPreferredMove(board) ??
-      -1
-    );
+    return findPreferredMove(board) ?? -1;
   },
 };

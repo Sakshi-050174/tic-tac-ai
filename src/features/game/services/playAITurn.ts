@@ -1,15 +1,8 @@
-import {
-  createMove,
-  performAITurn,
-  updateScores,
-} from ".";
+import { createMove, performAITurn, updateScores } from ".";
 
 import { getNextPlayer } from "../utils/getNextPlayer";
 
-import type {
-  PlayAITurnOptions,
-  TurnResult,
-} from "./types";
+import type { PlayAITurnOptions, TurnResult } from "./types";
 
 export function playAITurn({
   board,
@@ -18,11 +11,8 @@ export function playAITurn({
   moves,
   scores,
 }: PlayAITurnOptions): TurnResult | null {
-  const aiResult = performAITurn({
-    board,
-    aiPlayer,
-    difficulty,
-  });
+
+  const aiResult = performAITurn({ board, aiPlayer, difficulty });
 
   if (!aiResult) {
     return null;
@@ -44,15 +34,9 @@ export function playAITurn({
 
   return {
     board: aiResult.board,
-
     result: aiResult.result,
-
     move,
-
     scores: updatedScores,
-
-    nextPlayer: getNextPlayer(
-      aiPlayer
-    ),
+    nextPlayer: getNextPlayer(aiPlayer),
   };
 }

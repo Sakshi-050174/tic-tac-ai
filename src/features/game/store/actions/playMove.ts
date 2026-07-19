@@ -88,9 +88,7 @@ async function executeAITurn(
 
   const move = getAIMove({
     board: latest.board,
-
     aiPlayer: latest.ai.player,
-
     difficulty:
       latest.ai.difficulty,
   });

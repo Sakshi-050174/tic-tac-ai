@@ -1,46 +1,25 @@
-import type {
-  BoardState,
-  Player,
-} from "../types/types";
+import type { BoardState, Player } from "../types/types";
 
-export function cloneBoard(
-  board: BoardState
-): BoardState {
-  return [...board];
-}
+export const cloneBoard = (board: BoardState): BoardState => [...board]
 
-export function getAvailableMoves(
-  board: BoardState
-): number[] {
+export const getAvailableMoves = (board: BoardState): number[] => {
+
   return board.reduce<number[]>(
     (moves, cell, index) => {
       if (cell === null) {
         moves.push(index);
       }
-
       return moves;
     },
     []
   );
 }
 
-export function isBoardFull(
-  board: BoardState
-): boolean {
-  return board.every(
-    (cell) => cell !== null
-  );
-}
+export const isBoardFull = (board: BoardState): boolean => board.every((cell) => cell !== null);
 
-export function applyMove(
-  board: BoardState,
-  index: number,
-  player: Player
-): BoardState {
-  const nextBoard =
-    cloneBoard(board);
+export const applyMove = (board: BoardState, index: number, player: Player): BoardState => {
 
+  const nextBoard = cloneBoard(board);
   nextBoard[index] = player;
-
   return nextBoard;
 }

@@ -1,39 +1,25 @@
 import click from "@/assets/sounds/click.mp3";
 import win from "@/assets/sounds/win.mp3";
 
-export type SoundName =
-  | "click"
-  | "win"
-  | "draw"
-  | "undo"
-  | "restart";
+export type SoundName = | "click" | "win" | "draw" | "undo" | "restart";
 
 const STORAGE_KEY = "tic-tac-toe:sound";
 
 export class SoundManager {
+
   private volume = 0.6;
-
   private muted = false;
-
-  private readonly sounds: Record<
-    SoundName,
-    HTMLAudioElement
-  >;
+  private readonly sounds: Record<SoundName, HTMLAudioElement>;
 
   constructor() {
-    this.muted =
-      localStorage.getItem(STORAGE_KEY) ===
-      "off";
+
+    this.muted = localStorage.getItem(STORAGE_KEY) === "off";
 
     this.sounds = {
       click: new Audio(click),
-
       win: new Audio(win),
-
       draw: new Audio(win),
-
       undo: new Audio(click),
-
       restart: new Audio(click),
     };
 
@@ -44,7 +30,6 @@ export class SoundManager {
     Object.values(this.sounds).forEach(
       (audio) => {
         audio.preload = "auto";
-
         audio.volume = this.volume;
       }
     );
@@ -56,36 +41,15 @@ export class SoundManager {
     }
 
     const audio = this.sounds[sound];
-
     audio.pause();
-
     audio.currentTime = 0;
-
-    void audio.play().catch(() => {});
+    void audio.play().catch(() => { });
   }
 
-  mute() {
-    this.muted = true;
-
-    localStorage.setItem(
-      STORAGE_KEY,
-      "off"
-    );
-  }
-
-  unmute() {
-    this.muted = false;
-
-    localStorage.setItem(
-      STORAGE_KEY,
-      "on"
-    );
-  }
 
   toggle() {
-    this.muted
-      ? this.unmute()
-      : this.mute();
+    this.muted = !this.muted;
+    localStorage.setItem(STORAGE_KEY, this.muted ? "off" : "on")
   }
 
   isMuted() {
@@ -93,10 +57,7 @@ export class SoundManager {
   }
 
   setVolume(volume: number) {
-    this.volume = Math.max(
-      0,
-      Math.min(1, volume)
-    );
+    this.volume = Math.max(0, Math.min(1, volume));
 
     Object.values(this.sounds).forEach(
       (audio) => {
@@ -106,5 +67,4 @@ export class SoundManager {
   }
 }
 
-export const soundManager =
-  new SoundManager();
+export const soundManager = new SoundManager();

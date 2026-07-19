@@ -1,7 +1,4 @@
-import type {
-  BoardState,
-  Player,
-} from "../../types";
+import type { BoardState, Player } from "../../types";
 
 import { findWinningMove } from "./findWinningMove";
 
@@ -14,27 +11,15 @@ import { findWinningMove } from "./findWinningMove";
  *
  * Returns null if neither exists.
  */
-export function findImmediateMove(
-  board: BoardState,
-  aiPlayer: Player
-): number | null {
-  const winningMove =
-    findWinningMove(
-      board,
-      aiPlayer
-    );
+export function findImmediateMove(board: BoardState, aiPlayer: Player): number | null {
+
+  const winningMove = findWinningMove(board, aiPlayer);
 
   if (winningMove !== null) {
     return winningMove;
   }
 
-  const opponent: Player =
-    aiPlayer === "X"
-      ? "O"
-      : "X";
+  const opponent: Player = aiPlayer === "X" ? "O" : "X";
 
-  return findWinningMove(
-    board,
-    opponent
-  );
+  return findWinningMove(board, opponent);
 }
