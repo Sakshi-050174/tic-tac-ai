@@ -7,8 +7,10 @@
       "DOM"
     ],
     "module": "esnext",
-    "types": [
-      "vite/client"
+    "types": ["vite/client"],
+    "typeRoots": [
+      "./node_modules/@types",
+      "./node_modules"
     ],
     "allowArbitraryExtensions": true,
     "skipLibCheck": true,
