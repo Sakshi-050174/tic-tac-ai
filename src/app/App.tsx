@@ -1,7 +1,5 @@
-import MainLayout from "../components/layouts/MainLayout";
+import Game from "@/components/game/Game";
 
 export default function App() {
-  return (
-    <MainLayout />
-  );
+  return <Game />;
 }

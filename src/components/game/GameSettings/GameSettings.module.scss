@@ -1,63 +1,40 @@
 .panel {
   display: flex;
   flex-direction: column;
-
-  gap: 1.5rem;
-
-  width: 280px;
-
-  padding: 1.5rem;
-
-  border-radius: 20px;
-
-  background: rgba(255, 255, 255, 0.05);
-
-  border: 1px solid rgba(255, 255, 255, 0.08);
-
-  backdrop-filter: blur(16px);
-}
-
-.title {
-  font-size: 1.125rem;
-
-  font-weight: 600;
-}
-
-.section {
-  display: flex;
-  flex-direction: column;
-
   gap: 0.5rem;
-}
-
-.section label {
-  font-size: 0.875rem;
-
-  color: var(--color-text-secondary);
-}
-
-.section select {
-  padding: 0.75rem;
-
-  border: 1px solid rgba(255, 255, 255, 0.08);
-
-  border-radius: 12px;
-
+  width: 200px;
+  padding: 1rem;
+  border-radius: 20px;
   background: rgba(255, 255, 255, 0.05);
-
-  color: inherit;
-
-  font: inherit;
-
-  outline: none;
-}
-
-.section select:focus {
-  border-color: var(--color-primary);
-}
-
-.section select:disabled {
-  opacity: 0.5;
-
-  cursor: not-allowed;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  .title {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  .section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    label {
+      font-size: 0.875rem;
+      color: var(--color-text-secondary);
+    }
+    select {
+      padding: 0.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      color: inherit;
+      font: inherit;
+      outline: none;
+      &:focus {
+        border-color: var(--color-primary);
+      }
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+  }
 }

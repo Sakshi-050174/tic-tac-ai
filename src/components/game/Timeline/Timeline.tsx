@@ -1,21 +1,12 @@
 import { motion } from "framer-motion";
 
-import { useGameStore } from "../../../../features/game/store";
-import { gameSelectors } from "../../../../features/game/store/selectors";
+import { useGameStore, gameSelectors } from "@/features/game/store";
 
-import styles from "./Timeline.module.scss";
+import styles from  "./Timeline.module.scss";
+import XSymbol from "../symbols/XSymbol";
+import OSymbol from "../symbols/OSymbol";
 
-const CELL_NAMES = [
-  "A1",
-  "A2",
-  "A3",
-  "B1",
-  "B2",
-  "B3",
-  "C1",
-  "C2",
-  "C3",
-];
+const CELL_NAMES = ["A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3"];
 
 export default function Timeline() {
   const moves = useGameStore(gameSelectors.moves);
@@ -42,8 +33,7 @@ export default function Timeline() {
 
       <ul className={styles.list}>
         {moves.map((move, index) => {
-          const isLatest =
-            index === moves.length - 1;
+          const isLatest = index === moves.length - 1;
 
           return (
             <motion.li
@@ -60,25 +50,19 @@ export default function Timeline() {
               transition={{
                 duration: 0.2,
               }}
-              className={`${styles.item} ${
-                isLatest
-                  ? styles.latest
-                  : ""
-              }`}
+              className={`${styles.item} ${isLatest ? styles.latest : ""}`}
             >
               <span className={styles.player}>
-                {move.player === "X"
-                  ? "❌"
-                  : "⭕"}
+                {move.player === "X" ? (
+                  <XSymbol size={20} />
+                ) : (
+                  <OSymbol size={20} />
+                )}
               </span>
 
-              <span className={styles.cell}>
-                {CELL_NAMES[move.index]}
-              </span>
+              <span className={styles.cell}>{CELL_NAMES[move.index]}</span>
 
-              <span className={styles.move}>
-                #{move.id}
-              </span>
+              <span className={styles.move}>#{move.id}</span>
             </motion.li>
           );
         })}

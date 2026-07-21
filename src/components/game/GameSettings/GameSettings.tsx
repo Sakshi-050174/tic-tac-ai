@@ -26,8 +26,6 @@ export default function GameSettings() {
 
   return (
     <aside className={styles.panel}>
-      <h2 className={styles.title}>Game Settings</h2>
-
       <div className={styles.section}>
         <label htmlFor="game-mode" className={styles.label}>
           Mode

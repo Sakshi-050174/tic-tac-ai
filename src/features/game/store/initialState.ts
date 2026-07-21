@@ -5,7 +5,7 @@ import type { GameState } from "./types";
 const createBoard = (): BoardState => [...INITIAL_BOARD];
 
 export const DEFAULT_AI: AIConfig = {
-  enabled: false,
+  enabled: true,
   player: "O",
   difficulty: "medium",
   thinkingDelay: 500,
@@ -22,7 +22,7 @@ export const createInitialState =
     xScore: 0,
     oScore: 0,
     drawScore: 0,
-    mode: "human-vs-human",
+    mode: "human-vs-ai",
     ai: {...DEFAULT_AI},
     isThinking: false,
   });

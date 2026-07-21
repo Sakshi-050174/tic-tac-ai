@@ -4,16 +4,13 @@ import type {
 
 export interface ScoreState {
   xScore: number;
-
   oScore: number;
-
   drawScore: number;
 }
 
 interface UpdateScoresOptions
   extends ScoreState {
   winner: Player | null;
-
   isDraw: boolean;
 }
 

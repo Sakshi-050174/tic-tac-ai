@@ -1,52 +1,62 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { useMediaQuery } from "react-responsive";
 import { useReducedMotion } from "framer-motion";
 
 import Board from "../Board";
-import Timeline from "./Timeline";
-import Toolbar from "../Toolbar";
-import Status from "../Status";
-import ScoreCard from "../ScoreCard";
+import Timeline from "../Timeline";
+import Header from "../Header";
+import ScoreBar from "../ScoreBar";
+import GameSettings from "../GameSettings";
 
 import { celebrateWinner } from "@/features/game/utils/confetti";
 
-import {
-  gameSelectors,
-  useGameStore,
-} from "@/features/game/store";
+import { gameSelectors, useGameStore } from "@/features/game/store";
+
+import { soundManager } from "@/features/game/services/audio";
 
 import styles from "./Game.module.scss";
-import OSymbol from "../symbols/OSymbol";
-import XSymbol from "../symbols/XSymbol";
-import { soundManager } from "@/features/game/services/audio";
 
 export default function Game() {
   const isMobile = useMediaQuery({
     maxWidth: 767,
   });
 
-  const shouldReduceMotion =
-    useReducedMotion();
+  const shouldReduceMotion = useReducedMotion();
 
-  const winner =
-    useGameStore(gameSelectors.winner);
+  const [showSettings, setShowSettings] = useState(false);
 
-  const previousWinner =
-    useRef<string | null>(null);
+  const winner = useGameStore(gameSelectors.winner);
 
-  const xScore = useGameStore(gameSelectors.xScore);
-  const oScore = useGameStore(gameSelectors.oScore);
-  const drawScore = useGameStore(gameSelectors.drawScore)
+  const previousWinner = useRef<string | null>(null);
 
+  const settingsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (
-      !shouldReduceMotion &&
-      !previousWinner.current &&
-      winner
-    ) {
-      soundManager.play('win');
+    if (!showSettings) {
+      return;
+    }
+
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        settingsRef.current &&
+        !settingsRef.current.contains(event.target as Node)
+      ) {
+        setShowSettings(false);
+      }
+    }
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [showSettings]);
+
+  useEffect(() => {
+    if (!shouldReduceMotion && !previousWinner.current && winner) {
+      soundManager.play("win");
+
       celebrateWinner();
     }
 
@@ -55,33 +65,17 @@ export default function Game() {
 
   return (
     <main className={styles.game}>
-      <section className={styles.top}>
-        <Status />
+      <div ref={settingsRef} className={styles.settingsContainer}>
+        <Header onSettingsClick={() => setShowSettings((prev) => !prev)} />
 
-        <div className={styles.scores}>
-          <ScoreCard
-            label="Player X"
-            value={xScore}
-            icon={<XSymbol />}
-            variant="x"
-          />
+        {showSettings && (
+          <div className={styles.settingsWrapper}>
+            <GameSettings />
+          </div>
+        )}
+      </div>
 
-          <ScoreCard
-            label="Draws"
-            value={drawScore}
-            icon={<span>—</span>}
-            variant="draw"
-          />
-
-          <ScoreCard
-            label="Player O"
-            value={oScore}
-            icon={<OSymbol />}
-            variant="o"
-          />
-        </div>
-
-      </section>
+      <ScoreBar />
 
       <section className={styles.content}>
         <div className={styles.boardSection}>
@@ -90,8 +84,6 @@ export default function Game() {
 
         {!isMobile && <Timeline />}
       </section>
-
-      <Toolbar />
     </main>
   );
 }
