@@ -1,22 +1,22 @@
+import clsx from "clsx";
+
 import Cell from "../Cell";
 
-import { useGameStore } from "../../../features/game/store";
+import { gameSelectors, useGameStore } from "../../../features/game/store";
 
 import styles from "./Board.module.scss";
 
 export default function Board() {
-  const {
-    board,
-    playMove,
-    winner,
-    isDraw,
-    winningLine,
-  } = useGameStore();
+  const board = useGameStore(gameSelectors.board);
+  const playMove = useGameStore(gameSelectors.playMove);
+  const winner = useGameStore(gameSelectors.winner);
+  const isDraw = useGameStore(gameSelectors.isDraw);
+  const winningLine = useGameStore(gameSelectors.winningLine);
 
   return (
     <section className={styles.boardWrapper}>
       <div
-        className={styles.board}
+        className={clsx(styles.board, winner && styles.boardWon)}
         aria-label="Tic Tac Toe Board"
       >
         {board.map((value, index) => (
@@ -24,12 +24,9 @@ export default function Board() {
             key={index}
             value={value}
             isWinning={winningLine.includes(index)}
-            disabled={
-              value !== null ||
-              winner !== null ||
-              isDraw
-            }
-            onClick={() => playMove(index)}
+            index={index}
+            disabled={value !== null || winner !== null || isDraw}
+            onClick={playMove}
           />
         ))}
       </div>

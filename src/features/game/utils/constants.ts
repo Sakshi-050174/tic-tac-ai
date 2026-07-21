@@ -13,7 +13,4 @@ export const WINNING_COMBINATIONS: number[][] = [
   [2, 4, 6],
 ];
 
-export const INITIAL_BOARD = Array.from(
-  { length: BOARD_SIZE },
-  () => null
-);
+export const INITIAL_BOARD = Array.from({ length: BOARD_SIZE }, () => null);

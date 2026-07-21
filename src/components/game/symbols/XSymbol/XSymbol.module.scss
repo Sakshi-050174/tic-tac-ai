@@ -1,28 +1,15 @@
-.symbol {
-  width: 56px;
-  height: 56px;
-}
-
 .line {
   fill: none;
-
   stroke: #818cf8;
-
   stroke-width: 10;
-
   stroke-linecap: round;
-
   stroke-linejoin: round;
-
   stroke-dasharray: 120;
-
   stroke-dashoffset: 120;
-
-  animation: draw .35s ease forwards;
-}
-
-.line:nth-child(2) {
-  animation-delay: .15s;
+  animation: draw 0.35s ease forwards;
+  &:nth-child(2) {
+    animation-delay: 0.15s;
+  }
 }
 
 @keyframes draw {

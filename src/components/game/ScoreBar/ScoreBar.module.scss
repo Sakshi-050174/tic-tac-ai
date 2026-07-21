@@ -1,0 +1,62 @@
+.scoreBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 1rem;
+
+  padding: 0.75rem 1rem;
+
+  border-radius: 14px;
+
+  background: var(--nx-color-surface);
+
+  border: 1px solid var(--nx-color-border);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  min-width: 90px;
+
+  justify-content: center;
+
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.item svg {
+  width: 20px;
+  height: 20px;
+}
+
+.drawIcon {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.x {
+  color: var(--player-x-color);
+}
+
+.o {
+  color: var(--player-o-color);
+}
+
+.draw {
+  color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .scoreBar {
+    gap: 0.5rem;
+    padding: 0.65rem;
+  }
+
+  .item {
+    min-width: auto;
+    flex: 1;
+  }
+}

@@ -9,9 +9,7 @@ interface Props {
   value: CellValue;
 }
 
-export default function CellContent({
-  value,
-}: Props) {
+export default function CellContent({ value }: Props) {
   if (!value) {
     return null;
   }
@@ -32,11 +30,7 @@ export default function CellContent({
         duration: 0.25,
       }}
     >
-      {value === "X" ? (
-        <XSymbol />
-      ) : (
-        <OSymbol />
-      )}
+      {value === "X" ? <XSymbol /> : <OSymbol />}
     </motion.span>
   );
 }
