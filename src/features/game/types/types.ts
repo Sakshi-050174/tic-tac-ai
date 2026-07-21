@@ -4,15 +4,9 @@ export type CellValue = Player | null;
 
 export type BoardState = CellValue[];
 
-export type GameMode =
-  | "human-vs-human"
-  | "human-vs-ai";
+export type GameMode = "human-vs-human" | "human-vs-ai";
 
-export type Difficulty =
-  | "easy"
-  | "medium"
-  | "hard"
-  | "impossible";
+export type Difficulty = "easy" | "medium" | "hard" | "impossible";
 
 export interface Move {
   id: number;

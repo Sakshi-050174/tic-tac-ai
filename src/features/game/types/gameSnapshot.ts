@@ -1,8 +1,4 @@
-import type {
-  BoardState,
-  Move,
-  Player,
-} from "./types";
+import type { BoardState, Move, Player } from "./types";
 
 export interface GameSnapshot {
   board: BoardState;

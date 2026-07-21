@@ -11,18 +11,17 @@ export const DEFAULT_AI: AIConfig = {
   thinkingDelay: 500,
 };
 
-export const createInitialState =
-  (): GameState => ({
-    board: createBoard(),
-    currentPlayer: "X",
-    winner: null,
-    winningLine: [],
-    isDraw: false,
-    moves: [],
-    xScore: 0,
-    oScore: 0,
-    drawScore: 0,
-    mode: "human-vs-ai",
-    ai: {...DEFAULT_AI},
-    isThinking: false,
-  });
+export const createInitialState = (): GameState => ({
+  board: createBoard(),
+  currentPlayer: "X",
+  winner: null,
+  winningLine: [],
+  isDraw: false,
+  moves: [],
+  xScore: 0,
+  oScore: 0,
+  drawScore: 0,
+  mode: "human-vs-ai",
+  ai: { ...DEFAULT_AI },
+  isThinking: false,
+});

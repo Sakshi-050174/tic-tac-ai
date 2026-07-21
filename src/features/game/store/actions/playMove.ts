@@ -6,17 +6,9 @@ import { soundManager } from "../../services/audio";
 
 import type { GameActions } from "../types";
 
-import type {
-  GetState,
-  SetState,
-} from "./helpers";
+import type { GetState, SetState } from "./helpers";
 
-import {
-  applyTurn,
-  canPlayMove,
-  delay,
-  shouldPlayAI,
-} from "./helpers";
+import { applyTurn, canPlayMove, delay, shouldPlayAI } from "./helpers";
 
 /**
  * Executes a human or AI move and updates the store.
@@ -24,7 +16,7 @@ import {
 function executeTurn(
   set: SetState,
   state: ReturnType<GetState>,
-  index: number
+  index: number,
 ) {
   const turn = playHumanTurn({
     board: state.board,
@@ -44,21 +36,13 @@ function executeTurn(
     },
   });
 
-  set((current) =>
-    applyTurn(
-      turn,
-      current.moves
-    )
-  );
+  set((current) => applyTurn(turn, current.moves));
 }
 
 /**
  * Executes the AI turn if required.
  */
-async function executeAITurn(
-  set: SetState,
-  get: GetState
-) {
+async function executeAITurn(set: SetState, get: GetState) {
   const state = get();
 
   if (!shouldPlayAI(state)) {
@@ -69,16 +53,11 @@ async function executeAITurn(
     isThinking: true,
   });
 
-  await delay(
-    state.ai.thinkingDelay
-  );
+  await delay(state.ai.thinkingDelay);
 
   const latest = get();
 
-  if (
-    latest.winner ||
-    latest.isDraw
-  ) {
+  if (latest.winner || latest.isDraw) {
     set({
       isThinking: false,
     });
@@ -89,15 +68,10 @@ async function executeAITurn(
   const move = getAIMove({
     board: latest.board,
     aiPlayer: latest.ai.player,
-    difficulty:
-      latest.ai.difficulty,
+    difficulty: latest.ai.difficulty,
   });
 
-  executeTurn(
-    set,
-    latest,
-    move
-  );
+  executeTurn(set, latest, move);
 
   set({
     isThinking: false,
@@ -109,33 +83,19 @@ async function executeAITurn(
  */
 export function createPlayMove(
   set: SetState,
-  get: GetState
+  get: GetState,
 ): GameActions["playMove"] {
-  return async (
-    index: number
-  ) => {
+  return async (index: number) => {
     const state = get();
 
-    if (
-      !canPlayMove(
-        state,
-        index
-      )
-    ) {
+    if (!canPlayMove(state, index)) {
       return;
     }
 
     soundManager.play("click");
 
-    executeTurn(
-      set,
-      state,
-      index
-    );
+    executeTurn(set, state, index);
 
-    await executeAITurn(
-      set,
-      get
-    );
+    await executeAITurn(set, get);
   };
 }

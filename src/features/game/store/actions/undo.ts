@@ -4,23 +4,15 @@ import { soundManager } from "../../services/audio";
 
 import type { GameActions } from "../types";
 
-import type {
-  GetState,
-  SetState,
-} from "./helpers";
+import type { GetState, SetState } from "./helpers";
 
-import {
-  getCurrentPlayer,
-} from "./helpers";
+import { getCurrentPlayer } from "./helpers";
 
 /**
  * Undoes the last move (or last two moves in AI mode)
  * and recalculates the current game state.
  */
-export function createUndo(
-  set: SetState,
-  get: GetState
-): GameActions["undo"] {
+export function createUndo(set: SetState, get: GetState): GameActions["undo"] {
   return () => {
     const state = get();
 
@@ -30,9 +22,7 @@ export function createUndo(
       mode: state.mode,
     });
 
-    const result = evaluateBoard(
-      undoState.board
-    );
+    const result = evaluateBoard(undoState.board);
 
     soundManager.play("undo");
 
@@ -41,10 +31,7 @@ export function createUndo(
 
       moves: undoState.moves,
 
-      currentPlayer:
-        getCurrentPlayer(
-          undoState.moves
-        ),
+      currentPlayer: getCurrentPlayer(undoState.moves),
 
       winner: result.winner,
 

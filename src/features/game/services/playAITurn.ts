@@ -11,7 +11,6 @@ export function playAITurn({
   moves,
   scores,
 }: PlayAITurnOptions): TurnResult | null {
-
   const aiResult = performAITurn({ board, aiPlayer, difficulty });
 
   if (!aiResult) {

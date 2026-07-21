@@ -1,7 +1,4 @@
-import type {
-  Move,
-  Player,
-} from "../types";
+import type { Move, Player } from "../types";
 
 interface CreateMoveOptions {
   moveNumber: number;
@@ -23,7 +20,6 @@ export function createMove({
 
     index,
 
-    timestamp:
-      Date.now(),
+    timestamp: Date.now(),
   };
 }

@@ -12,23 +12,16 @@ import type { SetState } from "./helpers";
  */
 export function createRestart(set: SetState): GameActions["restart"] {
   return () => {
-    
     soundManager.play("restart");
 
     set((state) => {
-      const {
-        mode,
-        ai,
-        xScore,
-        oScore,
-        drawScore,
-      } = state;
+      const { mode, ai, xScore, oScore, drawScore } = state;
 
       return {
         ...createInitialState(),
 
         mode,
-        ai: { ...ai},
+        ai: { ...ai },
         xScore,
         oScore,
         drawScore,

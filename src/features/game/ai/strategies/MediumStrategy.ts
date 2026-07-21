@@ -12,7 +12,6 @@ import { availableMoves, findImmediateMove } from "../helpers";
  */
 export const MediumStrategy: AIStrategy = {
   getMove({ board, aiPlayer }) {
-
     const immediateMove = findImmediateMove(board, aiPlayer);
 
     if (immediateMove !== null) {

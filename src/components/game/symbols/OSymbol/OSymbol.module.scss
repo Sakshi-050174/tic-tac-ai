@@ -1,11 +1,10 @@
-
 .circle {
   fill: none;
   stroke: #22c55e;
   stroke-width: 10;
   stroke-dasharray: 260;
   stroke-dashoffset: 260;
-  animation: draw .4s ease forwards;
+  animation: draw 0.4s ease forwards;
 }
 
 @keyframes draw {

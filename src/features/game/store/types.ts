@@ -1,10 +1,4 @@
-import type {
-  AIConfig,
-  BoardState,
-  GameMode,
-  Move,
-  Player,
-} from "../types";
+import type { AIConfig, BoardState, GameMode, Move, Player } from "../types";
 
 export interface ScoreState {
   xScore: number;

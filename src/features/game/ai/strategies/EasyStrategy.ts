@@ -15,7 +15,7 @@ export const EasyStrategy: AIStrategy = {
       return -1;
     }
 
-    const randomIndex = Math.floor( Math.random() * moves.length);
+    const randomIndex = Math.floor(Math.random() * moves.length);
 
     return moves[randomIndex];
   },

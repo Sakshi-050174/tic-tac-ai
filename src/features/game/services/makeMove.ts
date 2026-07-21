@@ -1,12 +1,9 @@
-import type {
-  BoardState,
-  Player,
-} from "../types/types";
+import type { BoardState, Player } from "../types/types";
 
 export function makeMove(
   board: BoardState,
   index: number,
-  player: Player
+  player: Player,
 ): BoardState {
   if (board[index] !== null) {
     return board;

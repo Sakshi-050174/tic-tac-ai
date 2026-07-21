@@ -16,10 +16,7 @@ export default function Board() {
   return (
     <section className={styles.boardWrapper}>
       <div
-        className={clsx(
-          styles.board,
-          winner && styles.boardWon
-        )}
+        className={clsx(styles.board, winner && styles.boardWon)}
         aria-label="Tic Tac Toe Board"
       >
         {board.map((value, index) => (
@@ -27,13 +24,9 @@ export default function Board() {
             key={index}
             value={value}
             isWinning={winningLine.includes(index)}
-            index = {index}
-            disabled={
-              value !== null ||
-              winner !== null ||
-              isDraw
-            }
-           onClick={playMove}
+            index={index}
+            disabled={value !== null || winner !== null || isDraw}
+            onClick={playMove}
           />
         ))}
       </div>

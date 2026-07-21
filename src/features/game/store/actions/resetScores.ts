@@ -15,17 +15,14 @@ export function createResetScores(set: SetState): GameActions["resetScores"] {
     soundManager.play("restart");
 
     set((state) => {
-      const {
-        mode,
-        ai,
-      } = state;
+      const { mode, ai } = state;
 
       return {
         ...createInitialState(),
 
         mode,
 
-        ai: {...ai}
+        ai: { ...ai },
       };
     });
   };

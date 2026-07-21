@@ -7,37 +7,32 @@ import { findWinningMove } from "./findWinningMove";
  *
  * A fork creates two simultaneous winning threats.
  */
-export function findForkMove(
-    board: BoardState,
-    player: Player
-): number | null {
-    const moves =
-        availableMoves(board);
+export function findForkMove(board: BoardState, player: Player): number | null {
+  const moves = availableMoves(board);
 
-    for (const move of moves) {
-        const copy = [...board];
+  for (const move of moves) {
+    const copy = [...board];
 
-        copy[move] = player;
+    copy[move] = player;
 
-        let winningLines = 0;
+    let winningLines = 0;
 
-        const nextMoves = availableMoves(copy);
+    const nextMoves = availableMoves(copy);
 
-        for (const next of nextMoves) {
-            const future = [...copy];
+    for (const next of nextMoves) {
+      const future = [...copy];
 
-            future[next] = player;
+      future[next] = player;
 
-            if (findWinningMove(future, player) !== null) {
+      if (findWinningMove(future, player) !== null) {
+        winningLines++;
 
-                winningLines++;
-
-                if (winningLines >= 2) {
-                    return move;
-                }
-            }
+        if (winningLines >= 2) {
+          return move;
         }
+      }
     }
+  }
 
-    return null;
+  return null;
 }

@@ -1,7 +1,4 @@
-import type {
-  BoardState,
-  Player,
-} from "../../types";
+import type { BoardState, Player } from "../../types";
 
 import { evaluateBoard } from "../../services";
 
@@ -13,10 +10,9 @@ import { evaluateBoard } from "../../services";
 export function evaluatePosition(
   board: BoardState,
   aiPlayer: Player,
-  depth: number
+  depth: number,
 ): number {
-  const result =
-    evaluateBoard(board);
+  const result = evaluateBoard(board);
 
   if (!result.winner) {
     return 0;

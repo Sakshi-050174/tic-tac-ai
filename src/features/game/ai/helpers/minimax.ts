@@ -22,13 +22,12 @@ interface MinimaxOptions {
 function evaluateTerminalState(
   board: BoardState,
   aiPlayer: Player,
-  depth: number
+  depth: number,
 ): number | null {
-
   const result = evaluateBoard(board);
 
   if (result.winner) {
-    return result.winner === aiPlayer ? 10 - depth : depth - 10
+    return result.winner === aiPlayer ? 10 - depth : depth - 10;
   }
 
   if (result.isDraw) {
@@ -52,7 +51,6 @@ export function minimax({
   alpha,
   beta,
 }: MinimaxOptions): MinimaxResult {
-
   const terminalScore = evaluateTerminalState(board, aiPlayer, depth);
 
   if (terminalScore !== null) {
@@ -63,38 +61,34 @@ export function minimax({
 
   let bestMove = -1;
 
-  let bestScore = maximizing ? Number.NEGATIVE_INFINITY : Number.POSITIVE_INFINITY;
+  let bestScore = maximizing
+    ? Number.NEGATIVE_INFINITY
+    : Number.POSITIVE_INFINITY;
 
   for (const move of availableMoves(board)) {
-
     const nextBoard = [...board];
 
     nextBoard[move] = currentPlayer;
 
     const nextPlayer: Player = currentPlayer === "X" ? "O" : "X";
 
-    const { score } =
-      minimax({
-        board: nextBoard,
-        aiPlayer,
-        currentPlayer:
-          nextPlayer,
-        depth: depth + 1,
-        alpha,
-        beta,
-      });
+    const { score } = minimax({
+      board: nextBoard,
+      aiPlayer,
+      currentPlayer: nextPlayer,
+      depth: depth + 1,
+      alpha,
+      beta,
+    });
 
     if (maximizing) {
-
       if (score > bestScore) {
         bestScore = score;
         bestMove = move;
       }
 
       alpha = Math.max(alpha, bestScore);
-
     } else {
-
       if (score < bestScore) {
         bestScore = score;
         bestMove = move;

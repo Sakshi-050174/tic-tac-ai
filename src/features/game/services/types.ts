@@ -4,7 +4,7 @@ import type {
   GameResult,
   Move,
   Player,
-  GameMode
+  GameMode,
 } from "../types";
 
 export interface ScoreState {

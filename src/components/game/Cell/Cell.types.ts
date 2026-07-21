@@ -15,8 +15,5 @@ export interface CellProps {
 
   onClick: (index: number) => void;
 
-  onKeyDown?: (
-    event: KeyboardEvent<HTMLButtonElement>,
-    index: number
-  ) => void;
+  onKeyDown?: (event: KeyboardEvent<HTMLButtonElement>, index: number) => void;
 }

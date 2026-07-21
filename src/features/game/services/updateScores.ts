@@ -1,6 +1,4 @@
-import type {
-  Player,
-} from "../types/types";
+import type { Player } from "../types/types";
 
 export interface ScoreState {
   xScore: number;
@@ -8,8 +6,7 @@ export interface ScoreState {
   drawScore: number;
 }
 
-interface UpdateScoresOptions
-  extends ScoreState {
+interface UpdateScoresOptions extends ScoreState {
   winner: Player | null;
   isDraw: boolean;
 }

@@ -9,14 +9,14 @@ import type { SetState } from "./helpers";
  * Human vs AI     -> AI enabled
  */
 export function createSetMode(set: SetState): GameActions["setMode"] {
-    return (mode) => {
-        set((state) => ({
-            mode,
-            isThinking: false,
-            ai: {
-                ...state.ai,
-                enabled: mode === "human-vs-ai",
-            }
-        }));
-    };
+  return (mode) => {
+    set((state) => ({
+      mode,
+      isThinking: false,
+      ai: {
+        ...state.ai,
+        enabled: mode === "human-vs-ai",
+      },
+    }));
+  };
 }

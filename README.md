@@ -15,13 +15,12 @@ Tic-Tac-AI is a frontend-focused project that demonstrates modern React developm
 
 The project emphasizes:
 
-* Clean architecture
-* Component-driven development
-* State management
-* Responsive UI
-* Reusable components
-* Production-ready folder structure
-
+- Clean architecture
+- Component-driven development
+- State management
+- Responsive UI
+- Reusable components
+- Production-ready folder structure
 
 This project serves as both a learning resource and a portfolio project showcasing frontend engineering skills.
 
@@ -31,31 +30,31 @@ This project serves as both a learning resource and a portfolio project showcasi
 
 ### 🎯 Gameplay
 
-* Winner detection
-* Draw detection
-* Restart game
-* Reset scores
-* Undo Move
-* Move History
-* Turn indicator
+- Winner detection
+- Draw detection
+- Restart game
+- Reset scores
+- Undo Move
+- Move History
+- Turn indicator
 
 ### 🎨 UI
 
-* Modern interface
-* Responsive layout
-* Smooth animations
-* Interactive hover effects
-* Accessible controls
-* Mobile-friendly experience
+- Modern interface
+- Responsive layout
+- Smooth animations
+- Interactive hover effects
+- Accessible controls
+- Mobile-friendly experience
 
 ### ⚙️ Developer Experience
 
-* React + TypeScript
-* Vite
-* ESLint
-* Modular architecture
-* Reusable hooks
-* Scalable folder structure
+- React + TypeScript
+- Vite
+- ESLint
+- Modular architecture
+- Reusable hooks
+- Scalable folder structure
 
 ---
 
@@ -94,6 +93,7 @@ tic-tac-ai/
 ├── package.json
 └── README.md
 ```
+
 ---
 
 ## 🚀 Getting Started
@@ -156,10 +156,10 @@ npm run preview
 
 ## 🎮 Game Rules
 
-* Player **X** starts first.
-* Players take turns placing marks.
-* First player to align three marks horizontally, vertically, or diagonally wins.
-* If all cells are filled with no winner, the game ends in a draw.
+- Player **X** starts first.
+- Players take turns placing marks.
+- First player to align three marks horizontally, vertically, or diagonally wins.
+- If all cells are filled with no winner, the game ends in a draw.
 
 ---
 
@@ -167,10 +167,10 @@ npm run preview
 
 The application is optimized for:
 
-* Desktop
-* Laptop
-* Tablet
-* Mobile Devices
+- Desktop
+- Laptop
+- Tablet
+- Mobile Devices
 
 ---
 
@@ -178,38 +178,38 @@ The application is optimized for:
 
 The application follows accessibility best practices including:
 
-* Keyboard-friendly interactions
-* Semantic HTML
-* Screen reader support
-* Proper button roles
-* Focus management
-* Sufficient color contrast
+- Keyboard-friendly interactions
+- Semantic HTML
+- Screen reader support
+- Proper button roles
+- Focus management
+- Sufficient color contrast
 
 ---
 
 ## 📈 Future Enhancements
 
-* Difficulty levels
-* Online multiplayer
-* AI difficulty selection
-* Move history
-* Undo/Redo
-* Sound effects
-* Dark/Light theme
-* Player statistics
-* Animations
-* Leaderboard
-* PWA support
-* Multiplayer using WebSockets
+- Difficulty levels
+- Online multiplayer
+- AI difficulty selection
+- Move history
+- Undo/Redo
+- Sound effects
+- Dark/Light theme
+- Player statistics
+- Animations
+- Leaderboard
+- PWA support
+- Multiplayer using WebSockets
 
 ---
 
 ## 🧪 Testing (Planned)
 
-* Unit Tests
-* Component Tests
-* Integration Tests
-* End-to-End Tests
+- Unit Tests
+- Component Tests
+- Integration Tests
+- End-to-End Tests
 
 ---
 
@@ -217,11 +217,11 @@ The application follows accessibility best practices including:
 
 Add screenshots of:
 
-* Home Screen
-* Gameplay
-* AI Move
-* Winner Screen
-* Mobile View
+- Home Screen
+- Gameplay
+- AI Move
+- Winner Screen
+- Mobile View
 
 Example:
 

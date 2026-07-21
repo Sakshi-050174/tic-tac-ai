@@ -32,32 +32,23 @@ export function performAITurn({
   aiPlayer,
   difficulty,
 }: PerformAITurnOptions): PerformAITurnResult | null {
-  const response =
-    getBestAIMove({
-      board,
-      aiPlayer,
-      difficulty,
-    });
+  const response = getBestAIMove({
+    board,
+    aiPlayer,
+    difficulty,
+  });
 
   if (!response.success) {
     return null;
   }
 
-  const nextBoard =
-    makeMove(
-      board,
-      response.move,
-      aiPlayer
-    );
+  const nextBoard = makeMove(board, response.move, aiPlayer);
 
   return {
     board: nextBoard,
 
     move: response.move,
 
-    result:
-      evaluateBoard(
-        nextBoard
-      ),
+    result: evaluateBoard(nextBoard),
   };
 }

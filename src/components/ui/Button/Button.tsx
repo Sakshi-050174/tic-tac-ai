@@ -2,10 +2,9 @@ import clsx from "clsx";
 
 import styles from "./Button.module.scss";
 
-type ButtonProps =
-  React.ButtonHTMLAttributes<HTMLButtonElement> & {
-    variant?: "primary" | "secondary" | "danger";
-  };
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  variant?: "primary" | "secondary" | "danger";
+};
 
 export default function Button({
   variant = "primary",
@@ -14,11 +13,7 @@ export default function Button({
 }: ButtonProps) {
   return (
     <button
-      className={clsx(
-        styles.button,
-        styles[variant],
-        className
-      )}
+      className={clsx(styles.button, styles[variant], className)}
       {...props}
     />
   );

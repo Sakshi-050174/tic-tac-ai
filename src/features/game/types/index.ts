@@ -1,2 +1,2 @@
 export * from "./gameSnapshot";
-export * from "./types"
+export * from "./types";

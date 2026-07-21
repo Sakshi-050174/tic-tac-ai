@@ -1,7 +1,4 @@
-import {
-  forwardRef,
-  memo,
-} from "react";
+import { forwardRef, memo } from "react";
 
 import { motion } from "framer-motion";
 import clsx from "clsx";
@@ -12,10 +9,7 @@ import styles from "./Cell.module.scss";
 
 import type { CellProps } from "./Cell.types";
 
-const Cell = forwardRef<
-  HTMLButtonElement,
-  CellProps
->(
+const Cell = forwardRef<HTMLButtonElement, CellProps>(
   (
     {
       index,
@@ -26,7 +20,7 @@ const Cell = forwardRef<
       onClick,
       onKeyDown,
     },
-    ref
+    ref,
   ) => {
     return (
       <motion.button
@@ -37,11 +31,7 @@ const Cell = forwardRef<
         disabled={disabled}
         aria-disabled={disabled}
         aria-selected={isWinning}
-        aria-label={
-          value
-            ? `Occupied by ${value}`
-            : "Empty cell"
-        }
+        aria-label={value ? `Occupied by ${value}` : "Empty cell"}
         whileHover={
           disabled
             ? undefined
@@ -56,25 +46,14 @@ const Cell = forwardRef<
                 scale: 0.96,
               }
         }
-        className={clsx(
-          styles.cell,
-          isWinning &&
-            styles.winning
-        )}
-        onClick={() =>
-          onClick(index)
-        }
-        onKeyDown={(event) =>
-          onKeyDown?.(
-            event,
-            index
-          )
-        }
+        className={clsx(styles.cell, isWinning && styles.winning)}
+        onClick={() => onClick(index)}
+        onKeyDown={(event) => onKeyDown?.(event, index)}
       >
         <CellContent value={value} />
       </motion.button>
     );
-  }
+  },
 );
 
 Cell.displayName = "Cell";

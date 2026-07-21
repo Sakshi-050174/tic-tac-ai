@@ -1,5 +1,10 @@
 import type { StoreApi, UseBoundStore } from "zustand";
-import { evaluateBoard, playAITurn, playHumanTurn, undoMove } from "../services";
+import {
+  evaluateBoard,
+  playAITurn,
+  playHumanTurn,
+  undoMove,
+} from "../services";
 import { soundManager } from "../services/audio";
 import type { AIConfig, GameMode, Move } from "../types";
 import { createInitialState } from "./initialState";
@@ -10,8 +15,7 @@ type SetState = UseBoundStore<StoreApi<GameStore>>["setState"];
 type GetState = UseBoundStore<StoreApi<GameStore>>["getState"];
 
 const delay = (ms: number) =>
-  new Promise<void>((resolve) =>
-    setTimeout(resolve, ms));
+  new Promise<void>((resolve) => setTimeout(resolve, ms));
 
 const applyTurn = (turn: ReturnType<typeof playHumanTurn>, moves: Move[]) => {
   return {
@@ -25,7 +29,7 @@ const applyTurn = (turn: ReturnType<typeof playHumanTurn>, moves: Move[]) => {
     oScore: turn.scores.oScore,
     drawScore: turn.scores.drawScore,
   };
-}
+};
 
 export function createGameActions(set: SetState, get: GetState) {
   return {
@@ -34,8 +38,8 @@ export function createGameActions(set: SetState, get: GetState) {
         mode,
         ai: {
           ...state.ai,
-          enabled: mode === "human-vs-ai"
-        }
+          enabled: mode === "human-vs-ai",
+        },
       }));
     },
 
@@ -49,11 +53,14 @@ export function createGameActions(set: SetState, get: GetState) {
     },
 
     async playMove(index: number) {
-
       const state = get();
 
-      if (state.board[index] !== null || state.winner || state.isDraw
-        || state.isThinking) {
+      if (
+        state.board[index] !== null ||
+        state.winner ||
+        state.isDraw ||
+        state.isThinking
+      ) {
         return;
       }
 
@@ -63,18 +70,17 @@ export function createGameActions(set: SetState, get: GetState) {
       // Human Turn
       //--------------------------------
 
-      const humanTurn =
-        playHumanTurn({
-          board: state.board,
-          player: state.currentPlayer,
-          index,
-          moves: state.moves,
-          scores: {
-            xScore: state.xScore,
-            oScore: state.oScore,
-            drawScore: state.drawScore,
-          }
-        });
+      const humanTurn = playHumanTurn({
+        board: state.board,
+        player: state.currentPlayer,
+        index,
+        moves: state.moves,
+        scores: {
+          xScore: state.xScore,
+          oScore: state.oScore,
+          drawScore: state.drawScore,
+        },
+      });
 
       set((state) => applyTurn(humanTurn, state.moves));
 
@@ -84,8 +90,7 @@ export function createGameActions(set: SetState, get: GetState) {
         stateAfterHumanMove.ai.enabled &&
         !stateAfterHumanMove.winner &&
         !stateAfterHumanMove.isDraw &&
-        stateAfterHumanMove.currentPlayer ===
-        stateAfterHumanMove.ai.player;
+        stateAfterHumanMove.currentPlayer === stateAfterHumanMove.ai.player;
 
       if (!shouldPlayAI) {
         return;
@@ -110,18 +115,17 @@ export function createGameActions(set: SetState, get: GetState) {
       // AI Turn
       //--------------------------------
 
-      const aiTurn =
-        playAITurn({
-          board: stateBeforeAI.board,
-          aiPlayer: stateBeforeAI.ai.player,
-          difficulty: stateBeforeAI.ai.difficulty,
-          moves: stateBeforeAI.moves,
-          scores: {
-            xScore: stateBeforeAI.xScore,
-            oScore: stateBeforeAI.oScore,
-            drawScore: stateBeforeAI.drawScore,
-          },
-        });
+      const aiTurn = playAITurn({
+        board: stateBeforeAI.board,
+        aiPlayer: stateBeforeAI.ai.player,
+        difficulty: stateBeforeAI.ai.difficulty,
+        moves: stateBeforeAI.moves,
+        scores: {
+          xScore: stateBeforeAI.xScore,
+          oScore: stateBeforeAI.oScore,
+          drawScore: stateBeforeAI.drawScore,
+        },
+      });
 
       if (!aiTurn) {
         set({ isThinking: false });
@@ -137,11 +141,10 @@ export function createGameActions(set: SetState, get: GetState) {
     undo() {
       const state = get();
 
-      const undoState =
-        undoMove({
-          moves: state.moves,
-          mode: state.mode,
-        });
+      const undoState = undoMove({
+        moves: state.moves,
+        mode: state.mode,
+      });
 
       const result = evaluateBoard(undoState.board);
 
@@ -172,14 +175,13 @@ export function createGameActions(set: SetState, get: GetState) {
     },
 
     resetScores() {
-
       soundManager.play("restart");
 
       set((state) => ({
         ...createInitialState(),
         mode: state.mode,
-        ai: { ...state.ai }
+        ai: { ...state.ai },
       }));
-    }
+    },
   };
 }

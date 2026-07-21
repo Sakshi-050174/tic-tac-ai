@@ -16,8 +16,7 @@ import type { Player } from "../../types";
  */
 export const HardStrategy: AIStrategy = {
   getMove({ board, aiPlayer }) {
-    const immediateMove =
-      findImmediateMove(board, aiPlayer);
+    const immediateMove = findImmediateMove(board, aiPlayer);
 
     if (immediateMove !== null) {
       return immediateMove;

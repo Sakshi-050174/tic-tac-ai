@@ -11,8 +11,10 @@ import { findWinningMove } from "./findWinningMove";
  *
  * Returns null if neither exists.
  */
-export function findImmediateMove(board: BoardState, aiPlayer: Player): number | null {
-
+export function findImmediateMove(
+  board: BoardState,
+  aiPlayer: Player,
+): number | null {
   const winningMove = findWinningMove(board, aiPlayer);
 
   if (winningMove !== null) {
