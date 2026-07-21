@@ -1,269 +1,191 @@
-# 🎮 Tic-Tac-AI
+# 🎮 Tic Tac AI
 
-> A modern Tic-Tac-Toe application built with **React**, **TypeScript**, and **Vite**, featuring an intelligent AI opponent, beautiful UI, responsive design, and scalable frontend architecture.
+A modern, production-ready Tic Tac Toe game built with **React**, **TypeScript**, and **Vite** featuring multiple AI difficulty levels powered by the **Strategy Pattern** and **Minimax Algorithm**.
 
-![React](https://img.shields.io/badge/React-19-blue?logo=react)
-![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)
-![Vite](https://img.shields.io/badge/Vite-7-purple?logo=vite)
-![License](https://img.shields.io/badge/License-MIT-green)
+Designed with a scalable architecture, clean state management, and responsive UI, this project demonstrates modern frontend engineering practices beyond a simple game.
 
 ---
 
-## 📖 Overview
+## 🚀 Live Demo
 
-Tic-Tac-AI is a frontend-focused project that demonstrates modern React development practices while implementing an AI-powered Tic-Tac-Toe game.
+🌐 https://tic-tac-ai-git-main-sakshi-g-projects05.vercel.app/
 
-The project emphasizes:
+## 📂 Repository
 
-- Clean architecture
-- Component-driven development
-- State management
-- Responsive UI
-- Reusable components
-- Production-ready folder structure
-
-This project serves as both a learning resource and a portfolio project showcasing frontend engineering skills.
+💻 https://github.com/Sakshi-050174/tic-tac-ai
 
 ---
 
 ## ✨ Features
 
-### 🎯 Gameplay
+### Gameplay
 
-- Winner detection
-- Draw detection
-- Restart game
-- Reset scores
-- Undo Move
-- Move History
-- Turn indicator
+- 🎮 Human vs Human
+- 🤖 Human vs AI
+- 🎯 Four AI difficulty levels
+- ↩️ Undo moves
+- 🔄 Restart game
+- 📜 Move history timeline
+- 🏆 Winner & Draw detection
+- 🎉 Winner celebration animation
+- 🔊 Sound effects with mute toggle
+- 📱 Fully responsive design
 
-### 🎨 UI
+### AI Difficulty Levels
 
-- Modern interface
-- Responsive layout
-- Smooth animations
-- Interactive hover effects
-- Accessible controls
-- Mobile-friendly experience
-
-### ⚙️ Developer Experience
-
-- React + TypeScript
-- Vite
-- ESLint
-- Modular architecture
-- Reusable hooks
-- Scalable folder structure
+| Difficulty | Strategy |
+|------------|----------|
+| Easy | Random Move |
+| Medium | Win → Block → Random |
+| Hard | Win → Block → Fork → Block Fork → Center → Corner → Edge |
+| Impossible | Minimax Algorithm (Unbeatable AI) |
 
 ---
 
-## 🏗 Tech Stack
+## 🎥 Demo
 
-| Technology | Purpose      |
-| ---------- | ------------ |
-| React      | UI Library   |
-| TypeScript | Type Safety  |
-| Vite       | Build Tool   |
-| CSS / SCSS | Styling      |
-| ESLint     | Code Quality |
+> Replace this GIF after recording your gameplay.
+
+<p align="center">
+  <img src="./assets/screenshots/demo.mp4" alt="Gameplay Demo" width="900"/>
+</p>
 
 ---
 
-## 📂 Project Structure
+## 🏗 Architecture
 
-```text
-tic-tac-ai/
+```
+Game
 │
-├── public/
+├── Components
+├── Zustand Store
+├── Actions
+├── Services
+├── AI Engine
+├── Strategies
+└── Helpers
+```
+
+The application follows a modular architecture where UI, state management, business logic, and AI logic are cleanly separated for scalability and maintainability.
+
+---
+
+## 🤖 AI Engine
+
+The AI is implemented using the **Strategy Pattern**, allowing each difficulty level to encapsulate its own decision-making algorithm.
+
+```
+Easy
+   ↓
+Random Move
+
+Medium
+   ↓
+Win
+   ↓
+Block
+   ↓
+Random
+
+Hard
+   ↓
+Win
+   ↓
+Block
+   ↓
+Fork
+   ↓
+Block Fork
+   ↓
+Center
+   ↓
+Corner
+   ↓
+Edge
+
+Impossible
+   ↓
+Minimax Algorithm
+```
+
+---
+
+## 🛠 Tech Stack
+
+| Technology | Purpose |
+|------------|---------|
+| React | UI Library |
+| TypeScript | Type Safety |
+| Vite | Build Tool |
+| Zustand | State Management |
+| SCSS Modules | Component Styling |
+| Framer Motion | Animations |
+| React Responsive | Responsive Layout |
+| Lucide React | Icons |
+
+---
+
+## 📁 Project Structure
+
+```
+src
 │
-├── src/
-│   ├── app/
-│   ├── assets/
-│   ├── components/
-│   │   ├──game
-│   │   ├── layouts/
-│   │   ├── ui
-│   │
-│   ├── features/
-│   ├── styles/
-│   ├── App.css
-│   └── index.css
+├── assets
+├── components
+├── features
+│   └── game
+│       ├── ai
+│       ├── hooks
+│       ├── services
+│       ├── store
+│       ├── types
+│       └── utils
 │
-├── package.json
-└── README.md
+├── styles
+├── App.tsx
+└── main.tsx
 ```
 
 ---
 
 ## 🚀 Getting Started
 
-### Clone Repository
+### Prerequisites
+
+- Node.js 20+
+- pnpm
+
+### Installation
 
 ```bash
 git clone https://github.com/Sakshi-050174/tic-tac-ai.git
-```
 
-### Navigate to Project
-
-```bash
 cd tic-tac-ai
-```
 
-### Install Dependencies
-
-```bash
-npm install
-```
-
-or
-
-```bash
 pnpm install
-```
 
----
-
-### Run Development Server
-
-```bash
-npm run dev
-```
-
-or
-
-```bash
 pnpm dev
 ```
 
----
-
-### Build
+### Production Build
 
 ```bash
-npm run build
+pnpm build
 ```
 
 ---
 
-### Preview
+## 🎯 Engineering Highlights
 
-```bash
-npm run preview
-```
-
----
-
-## 🎮 Game Rules
-
-- Player **X** starts first.
-- Players take turns placing marks.
-- First player to align three marks horizontally, vertically, or diagonally wins.
-- If all cells are filled with no winner, the game ends in a draw.
-
----
-
-## 📱 Responsive Design
-
-The application is optimized for:
-
-- Desktop
-- Laptop
-- Tablet
-- Mobile Devices
-
----
-
-## ♿ Accessibility
-
-The application follows accessibility best practices including:
-
-- Keyboard-friendly interactions
-- Semantic HTML
-- Screen reader support
-- Proper button roles
-- Focus management
-- Sufficient color contrast
-
----
-
-## 📈 Future Enhancements
-
-- Difficulty levels
-- Online multiplayer
-- AI difficulty selection
-- Move history
-- Undo/Redo
-- Sound effects
-- Dark/Light theme
-- Player statistics
-- Animations
-- Leaderboard
-- PWA support
-- Multiplayer using WebSockets
-
----
-
-## 🧪 Testing (Planned)
-
-- Unit Tests
-- Component Tests
-- Integration Tests
-- End-to-End Tests
-
----
-
-## 📸 Screenshots
-
-Add screenshots of:
-
-- Home Screen
-- Gameplay
-- AI Move
-- Winner Screen
-- Mobile View
-
-Example:
-
-```text
-docs/
-   home.png
-   gameplay.png
-   winner.png
-```
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome!
-
-1. Fork the repository.
-2. Create a feature branch.
-
-```bash
-git checkout -b feature/my-feature
-```
-
-3. Commit your changes.
-
-```bash
-git commit -m "Add new feature"
-```
-
-4. Push to your branch.
-
-```bash
-git push origin feature/my-feature
-```
-
-5. Open a Pull Request.
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License.
+- Clean Component Architecture
+- Strategy Pattern
+- Minimax Search Algorithm
+- Modular AI Engine
+- Service Layer Architecture
+- Zustand State Management
+- Strong TypeScript Typing
+- Responsive UI
+- Production-ready Folder Structure
 
 ---
 
@@ -271,22 +193,11 @@ This project is licensed under the MIT License.
 
 **Sakshi Gupta**
 
-Frontend Engineer • React • TypeScript • UI Architecture
+Frontend Developer passionate about building scalable, maintainable, and modern web applications.
 
-GitHub: https://github.com/Sakshi-050174
-
-LinkedIn: https://www.linkedin.com/in/sakshi-gupta-874990361/
+- GitHub: https://github.com/Sakshi-050174
+- LinkedIn: https://www.linkedin.com/in/sakshi-gupta-874990361/
 
 ---
 
-## ⭐ Support
-
-If you found this project useful:
-
-⭐ Star the repository
-
-🍴 Fork it
-
-💬 Share your feedback
-
-Happy Coding! 🚀
+⭐ If you found this project useful, consider giving it a star!
