@@ -11,17 +11,23 @@ export default function GameSettings() {
   const ai = useGameStore(gameSelectors.ai);
   const setMode = useGameStore(gameSelectors.setMode);
   const updateAI = useGameStore(gameSelectors.updateAI);
+  const restartGame = useGameStore(gameSelectors.restart);
+  const resetScores = useGameStore(gameSelectors.resetScores);
 
   const handleModeChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setMode(event.target.value as GameMode);
+    restartGame();
   };
 
   const handleDifficultyChange = (event: ChangeEvent<HTMLSelectElement>) => {
     updateAI({ difficulty: event.target.value as Difficulty });
+    restartGame();
   };
 
   const handlePlayerChange = (event: ChangeEvent<HTMLSelectElement>) => {
     updateAI({ player: event.target.value as Player });
+    resetScores();
+    restartGame();
   };
 
   return (
