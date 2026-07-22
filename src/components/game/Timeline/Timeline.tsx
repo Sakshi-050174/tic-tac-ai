@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 import { useGameStore, gameSelectors } from "@/features/game/store";
 
-import styles  from "./Timeline.module.scss";
+import styles from "./TImeline.module.scss";
 import XSymbol from "../symbols/XSymbol";
 import OSymbol from "../symbols/OSymbol";
 
